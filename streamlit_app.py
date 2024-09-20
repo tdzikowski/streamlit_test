@@ -13,8 +13,6 @@ df = pd.read_csv('data/Bastar Craton.csv')
 cat_names = df.columns.tolist()[27:]
 col1, col2 = st.columns(2)
 
-el1 = st.selectbox('x-axis', cat_names)
-el2 = st.selectbox('y-axis', cat_names)
 
 with col1:
     el1 = st.selectbox('x-axis', cat_names)
@@ -22,7 +20,9 @@ with col1:
     
 with col2:
     fig = plt.figure()
-    plt.scatter(df['Mg']/10000, df['Si']/10000)
+    plt.scatter(df[el1]/10000, df[el2]/10000)
+    plt.xlabel(f"{el1} (wt%)")
+    plt.ylabel(f"{el2} (wt%)")
     st.pyplot(fig)
 
 
